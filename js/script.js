@@ -1,43 +1,15 @@
-//MODEL
-var model = {
-	currentCat: null,
-	cats: [
-		{'name':'Murci', 	'click':0, 'imgSrc': 'img/Murci.png'},
-		{'name':'Rusio',	'click':0, 'imgSrc': 'img/Rusio.png'},
-		{'name':'Capitan', 	'click':0, 'imgSrc': 'img/Capitan.png'},
-		{'name':'Apolo',	'click':0, 'imgSrc': 'img/Apolo.png'},
-		{'name':'Lucero',	'click':0, 'imgSrc': 'img/Lucero.png'},
-		{'name':'Dominique','click':0, 'imgSrc': 'img/Dominique.png'}
-	],
-};
+var cats = [
+	{'name':'Murci', 	'click':0},
+	{'name':'Rusio',	'click':0},
+	{'name':'Capitan', 	'click':0},
+	{'name':'Apolo',	'click':0},
+	{'name':'Lucero',	'click':0},
+	{'name':'Dominique','click':0}
+];
+
 var len = cats.length;
 var catSort = pickStringAndSort(cats);
 var catmeter = 0;
-
-//OCTOPUS
-var octopus = {
-	init: function(){
-		//set current cat to first of the list
-		model.currentCat = model.cats[0];
-		//tells our views to initialize
-		catListView.init();
-		catView.init();
-	},
-	getCurrentCat: function(){
-		return model.currentCat;
-	},
-	getCats: function(){
-		return model.cats;
-	},
-	setCurrentCat: function(cat){
-		model.currentCat = cat;
-	},
-	incrementCounter: function(){
-		model.currentCat.click++;
-		catView.render();
-	}
-}
-
 function pickStringAndSort(arrayObj){
 	var len = arrayObj.length;
 	var strings = [];
@@ -48,7 +20,6 @@ function pickStringAndSort(arrayObj){
 	}
 	return strings.sort();
 }
-//VIEW
 //draw cat menu sorted by name
 for(var i = 0; i < len; i++){
 	var pickerElem = '<li class="cat-list"><img src="img/'+catSort[i]+'.png" alt="'+catSort[i]+'" id="'+catSort[i]+'"><p>'+catSort[i]+'</p><hr></li>';
@@ -84,3 +55,28 @@ $('.cat-display').click(function(e){
 
 	}
 });
+
+// // clear the screen for testing
+// document.body.innerHTML = '';
+
+// var nums = [1,2,3];
+
+// // Let's loop over the numbers in our array
+// for (var i = 0; i < nums.length; i++) {
+
+//     // This is the number we're on...
+//     var num = nums[i];
+
+//     // We're creating a DOM element for the number
+//     var elem = document.createElement('div');
+//     elem.textContent = num;
+
+//     // ... and when we click, alert the value of `num`
+//     elem.addEventListener('click', (function(numCopy) {
+//         return function() {
+//             alert(numCopy);
+//         };
+//     })(num));
+
+//     document.body.appendChild(elem);
+// };
