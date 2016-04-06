@@ -15,7 +15,28 @@ var catSort = pickStringAndSort(cats);
 var catmeter = 0;
 
 //OCTOPUS
-
+var octopus = {
+	init: function(){
+		//set current cat to first of the list
+		model.currentCat = model.cats[0];
+		//tells our views to initialize
+		catListView.init();
+		catView.init();
+	},
+	getCurrentCat: function(){
+		return model.currentCat;
+	},
+	getCats: function(){
+		return model.cats;
+	},
+	setCurrentCat: function(cat){
+		model.currentCat = cat;
+	},
+	incrementCounter: function(){
+		model.currentCat.click++;
+		catView.render();
+	}
+}
 
 function pickStringAndSort(arrayObj){
 	var len = arrayObj.length;
